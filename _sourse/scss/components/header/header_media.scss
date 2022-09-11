@@ -1,0 +1,29 @@
+.header {
+    @media (max-width: calc_rem(1300)) {
+        &__level-2-right-side {
+            min-width: calc_rem(541);
+        }
+    }
+
+    @media (max-width: 1218px) {
+        &__catalog-top-line {
+            top: calc_rem(53);
+        }
+    }
+
+    @media (max-width: calc_rem(910)) {
+        &__level-2-right-side {
+            min-width: calc_rem(356);
+        }
+
+        &__buy-body {
+            display: none;
+        }
+    }
+
+    @media (max-width: 814px) {
+        &__catalog-top-line {
+            top: calc_rem(63);
+        }
+    }
+}
