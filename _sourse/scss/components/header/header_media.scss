@@ -67,7 +67,7 @@
         &__burger-menu-catalog {
             & span {
                 display: block;
-                padding-left: calc_rem(10);
+                padding-left: calc_rem(20);
             }
 
             & .header__havigation-list {
@@ -78,6 +78,9 @@
             & .header__navigation-item {
                 width: 100%;
             }
+        }
+        &__bugrer-last-list {
+            z-index: 5;
         }
         &__city {
             background: 0 50%/1.063rem 1.526rem url('../../../../img/icons/header/geo_white.svg') no-repeat;
@@ -125,6 +128,9 @@
         }
         &__level-3 {
             display: none;
+        }
+        &__navigation-item {
+            height: calc_rem(64);
         }
         &__catalog-top-line {
             top: calc_rem(63);

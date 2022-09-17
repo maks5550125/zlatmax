@@ -37,7 +37,7 @@ body {
 
     &>a {
         @extend %flex_vertical_center;
-        padding-left: calc_rem(10);
+        padding-left: calc_rem(20);
         width: 100%;
         height: 100%;
     }
@@ -71,4 +71,10 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translate(0);
+}
+
+.header__burger-go-back {
+    padding-left: calc_rem(50);
+    width: 100%;
+    background: 1.25rem 50%/1.25rem 1.25rem url('../../../img/icons/header/arrow-left.svg') no-repeat;
 }

@@ -134,12 +134,23 @@ function marginCorrectionForCatalogTitle() {
 
 $headerBurgerMenu.style.height = `${document.documentElement.scrollHeight - 160}px`
 
-adoptiveLessThan768()
+if (document.documentElement.clientWidth <= 768) {
+    adoptiveLessThan768();
+} else {
+    adoptiveMoreThan768();
+}
+window.addEventListener('resize', () => {
+    if (document.documentElement.clientWidth <= 768) {
+        adoptiveLessThan768();
+    } else {
+        adoptiveMoreThan768();
+    }
+})
 
 function adoptiveLessThan768() {
-    for (let i = 1; i < $headerAboutItems.length; i++) {
-        $headerAbout.prepend($headerAboutItems[i]);
-    }
+    // for (let i = 1; i < $headerAboutItems.length; i++) {
+    //     $headerAbout.prepend($headerAboutItems[i]);
+    // }
 
     $headerBurgerMenu.append($headerAbout);
 
@@ -150,6 +161,9 @@ function adoptiveLessThan768() {
 
     activateMenu($headerBurgerButton, $headerBurgerMenu, $headerAboutItems);
     activateMenu($headerBurgerMenuCatalog, $headerHeaderBurgerNavigationList, $headerBurgerCatalogItems);
+    for (let $item of $headerBurgerCatalogItems) {
+        activateMenu($item, $item.querySelector('.header__bugrer-last-list'), $item.querySelectorAll('.header__bugrer-last-item'));
+    }
 
     $headerHeaderBurgerNavigationList.classList.add('_header_buger-navigation-menu');
 
@@ -157,7 +171,7 @@ function adoptiveLessThan768() {
         $headerCallBody.classList.toggle('_shown');
     });
 
-    document.documentElement.addEventListener('click', (event) => {
+    document.documentElement.addEventListener('click', hideCallBody = (event) => {
         if ((!event.target.closest('.header__call-body')) && (!event.target.classList.contains('header__call-icon'))) {
             $headerCallBody.classList.remove('_shown');
         }
@@ -166,6 +180,12 @@ function adoptiveLessThan768() {
 
 function activateMenu($button, $menu, $items) {
     $menu.classList.add('_header_buger-navigation-menu');
+
+    let headerBurgerGoBack = document.createElement('button');
+    headerBurgerGoBack.setAttribute('type', 'button');
+    headerBurgerGoBack.classList.add('_header_buger-menu-item', 'header__burger-go-back');
+    headerBurgerGoBack.textContent = 'Назад';
+    $menu.prepend(headerBurgerGoBack)
 
     let rigthArrow = document.createElement('div');
     rigthArrow.classList.add('right-arrow');
@@ -179,20 +199,34 @@ function activateMenu($button, $menu, $items) {
     }
 
     $button.addEventListener('click', (event) => {
-        console.log('test')
         if (event.target.closest('.header__burger-button')) {
             $menu.classList.toggle('_shown');
         } else {
             if (!$menu.classList.contains('_shown')) {
-                $menu.classList.add('_shown');
+                if (!event.target.closest('.header__burger-go-back')) {
+                    $menu.classList.add('_shown');
+                }
+            }
+        }        
+    });
+
+    document.documentElement.addEventListener('click', (event) => {
+        if (!event.target.closest('.header__burger')) {
+            $menu.classList.remove('_shown');
+        }
+
+        if (!$button.classList.contains('header__burger-button')) {
+            if (event.target.classList.contains('header__burger-button')) {
+                $menu.classList.remove('_shown');
             }
         }
     });
 
-    document.documentElement.addEventListener('click', (event) => {
-        console.log(!event.target.closest('.header__burger'))
-        if (!event.target.closest('.header__burger')) {
-            $menu.classList.remove('_shown');
-        }
-    })
+    $menu.firstElementChild.addEventListener('click', () => {
+        $menu.classList.remove('_shown');
+    });
+}
+
+function adoptiveMoreThan768() {
+    document.documentElement.addEventListener('click', hideCallBody);
 }
