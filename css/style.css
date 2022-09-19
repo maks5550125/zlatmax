@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
 }
 
-.header__level-3-drop-down-list.shown:hover, .header__level-3-drop-down-list.shown {
+.header__level-3-drop-down-list._shown:hover, .header__level-3-drop-down-list._shown {
   opacity: 1;
   visibility: visible;
 }
@@ -501,11 +501,11 @@ body {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-.header__level-3-drop-down-list.shown {
+.header__level-3-drop-down-list._shown {
   -webkit-transform: translate(0);
           transform: translate(0);
 }
-.header__level-3-drop-down-list.shown:hover {
+.header__level-3-drop-down-list._shown:hover {
   -webkit-transform: translate(0);
           transform: translate(0);
 }

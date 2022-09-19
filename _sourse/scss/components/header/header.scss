@@ -248,7 +248,7 @@
             flex-grow: 1;
         }
     }
-    &__level-3-drop-down-list.shown {
+    &__level-3-drop-down-list._shown {
         transform: translate(0);
         @extend %show_block;
 
