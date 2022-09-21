@@ -10,8 +10,8 @@
     transition-duration: $ms * 1ms;
 }
 
-@mixin content($paddint, $content) {
+@mixin content($padding, $content) {
     margin: 0 auto;
-    padding: 0 calc_percent($paddint, $content);
-    max-width: calc_rem(1200);
+    padding: 0 calc_percent($padding, $content);
+    max-width: calc_rem($content);
 }
